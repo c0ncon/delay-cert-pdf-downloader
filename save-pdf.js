@@ -13,14 +13,14 @@ const cp = require('child_process');
 
   let ready = false;
   let certURL = '';
-  let rows = await page.$$('div.personal_area table tr');
+  let rows = await page.$$('div.delayTable table tr');
   for (row of rows) {
-    let nameCol = await row.$('th p[class^="line"]');
+    let nameCol = await row.$('th span.name');
     if (nameCol) {
       let lineText = await nameCol.evaluate((node) => node.innerText);
       if (lineText.includes(lineName)) {
         let status = await row.$('td:nth-child(3)');
-        ready = (await status.evaluate((node) => node.innerText)) !== '掲載準備中';
+        ready = (await status.evaluate((node) => node.innerText)) !== '掲載なし';
         if (ready) {
           certURL = await status.$eval('a', (node) => node.href);
         }
@@ -38,7 +38,7 @@ const cp = require('child_process');
     let today = (new Date()).toISOString().slice(0, 10).replace(/-/g, '');
     await page.pdf({
       path: `${process.env.USERPROFILE}\\Desktop\\${today}.pdf`,
-      width: 600,
+      width: 603,
       height: 611,
       printBackground: true
     });

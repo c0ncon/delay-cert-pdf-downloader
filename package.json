@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "puppeteer": "^2.1.1"
+    "npm-check-updates": "^9.2.2",
+    "puppeteer": "^5.4.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
