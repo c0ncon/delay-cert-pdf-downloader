@@ -38,8 +38,8 @@ const cp = require('child_process');
     let today = (new Date()).toISOString().slice(0, 10).replace(/-/g, '');
     await page.pdf({
       path: `${process.env.USERPROFILE}\\Desktop\\${today}.pdf`,
-      width: 603,
-      height: 611,
+      width: 600,
+      height: 612,
       printBackground: true
     });
 
